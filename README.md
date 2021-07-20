@@ -25,8 +25,8 @@
     NodeJS
 ### Setup
 
-    1. git clone https://github.com/ntzwilly/ToDoList.git
-    2. cd ToDoList
+    1. git clone https://github.com/ntzwilly/To_Do_List.git
+    2. cd To_Do_List
 
 ### Install
 
