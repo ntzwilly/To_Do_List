@@ -2,6 +2,7 @@ import './style.css';
 import moreIcon from './more.svg';
 import Icon from './enter.svg';
 import recycle from './recycle.svg';
+import dragAndDrop from './interactive.js'
 
 function elementGenerator(typeName, className, content, idName) {
   const element = document.createElement(typeName);
@@ -57,10 +58,10 @@ enterIcon.classList.add('enter-icon');
 
 form.appendChild(enterIcon);
 
-const todoList = elementGenerator('ul', 'to-do-list', null, null);
+export const todoList = elementGenerator('ul', 'to-do-list', null, null);
 
 todoTasks.forEach((elem, i) => {
-  todoList.innerHTML += `<li class="task">
+  todoList.innerHTML += `<li class="task draggable" draggable=true>
                              <div class="to-do-div">
                              <div>
                              <input class="one-todo" type="checkbox" id="${i}">
@@ -97,3 +98,7 @@ todo.appendChild(divClear);
 
 const toDoContainer = document.getElementById('todo-container');
 toDoContainer.appendChild(todo);
+
+window.addEventListener('load', () => {
+  dragAndDrop();
+})
