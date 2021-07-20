@@ -1,0 +1,163 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: rgb(246, 246, 246);
+  font-family: "Poppins", sans-serif;
+  color: rgb(88, 86, 86);
+}
+
+main {
+  margin: 200px auto;
+  width: 80%;
+  box-shadow:
+    5px 0 15px -4px rgba(0, 0, 0, 0.8),
+    -5px 0 8px -4px rgba(0, 0, 0, 0.8);
+}
+
+.todo-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.to-do-title {
+  padding: 15px;
+  background-color: #fff;
+}
+
+.add-to-do {
+  font-family: "Poppins", sans-serif;
+  width: 100%;
+  border: none;
+  padding: 15px;
+  font-style: italic;
+}
+
+.recycle {
+  width: 15px;
+  margin-right: 20px;
+  cursor: pointer;
+}
+
+input:focus,
+button:focus {
+  outline: none;
+}
+
+.to-do {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  border-bottom: 1px solid gainsboro;
+  background-color: #fff;
+}
+
+.title {
+  display: flex;
+  justify-content: space-between;
+  background-color: #fff;
+  border-bottom: 1px solid gainsboro;
+}
+
+.enter-icon {
+  width: 15px;
+  align-self: center;
+  margin-right: 20px;
+  background-color: #fff;
+  cursor: pointer;
+  fill: rebeccapurple;
+}
+
+.add-to-do li {
+  list-style-type: none;
+  font-style: normal;
+  border: 1px solid black;
+  padding-left: 0;
+  width: 100%;
+}
+
+.to-do-div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: #fff;
+  width: 100%;
+  padding: 15px;
+  padding-left: 18px;
+  border-bottom: 1px solid gainsboro;
+}
+
+.task {
+  display: flex;
+  align-items: center;
+}
+
+.label {
+  width: 100%;
+  padding: 3px;
+  margin-left: 15px;
+  font-size: 1rem;
+  color: rgb(88, 86, 86);
+  border: none;
+}
+
+.one-todo {
+  transform: scale(1.5);
+}
+
+.div-clear {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+.clear {
+  border: none;
+  background-color: rgb(246, 246, 246);
+  color: gray;
+}
+
+.clear:hover {
+  text-decoration: underline;
+  color: rgb(88, 86, 86);
+}
+
+.more {
+  height: 15px;
+  color: gray;
+  cursor: pointer;
+  justify-self: flex-end;
+}
+
+.more,
+.enter-icon,
+.recycle {
+  opacity: 0.5;
+}
+
+.more:hover,
+.enter-icon:hover,
+.recycle:hover {
+  opacity: 1;
+}
+
+.line-through {
+  text-decoration: line-through;
+}
+
+.task-background {
+  background-color: rgb(255, 254, 202);
+}
+
+.input-background {
+  background: rgb(255, 254, 202);
+}
+
+@media screen and (min-width: 768px) {
+  main {
+    width: 50%;
+  }
+}
