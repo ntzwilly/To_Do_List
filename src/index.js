@@ -60,7 +60,7 @@ form.appendChild(enterIcon);
 const todoList = elementGenerator('ul', 'to-do-list', null, null);
 
 todoTasks.forEach((elem, i) => {
-  todoList.innerHTML += `<li class="task draggable">
+  todoList.innerHTML += `<li class="task">
                              <div class="to-do-div">
                              <div>
                              <input class="one-todo" type="checkbox" id="${i}">
