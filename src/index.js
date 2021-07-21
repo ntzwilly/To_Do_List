@@ -2,7 +2,9 @@ import './style.css';
 import moreIcon from './more.svg';
 import Icon from './enter.svg';
 import recycle from './recycle.svg';
-import dragAndDrop from './interactive.js'
+import { dragAndDrop } from './interactive.js';
+import { checkboxChange, updateLocalStorage, update} from './status.js';
+
 
 function elementGenerator(typeName, className, content, idName) {
   const element = document.createElement(typeName);
@@ -18,7 +20,7 @@ function elementGenerator(typeName, className, content, idName) {
   return element;
 }
 
-const todoTasks = [
+export const todoTasks = [
   {
     description: 'Read the last chapiter of Ruby book',
     completed: false,
@@ -99,6 +101,9 @@ todo.appendChild(divClear);
 const toDoContainer = document.getElementById('todo-container');
 toDoContainer.appendChild(todo);
 
+
 window.addEventListener('load', () => {
   dragAndDrop();
+  checkboxChange();
 })
+

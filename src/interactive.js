@@ -1,9 +1,10 @@
 import { todoList, todoTasks } from './index.js';
 
 
-export default function dragAndDrop() {
-  const draggables = todoList.querySelectorAll(".draggable")
+export function dragAndDrop() {
  
+ const draggables = todoList.querySelectorAll(".draggable")
+
  draggables.forEach((draggable) => {
    draggable.addEventListener("dragstart", () => {
      draggable.classList.add("dragging");
