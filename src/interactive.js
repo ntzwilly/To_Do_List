@@ -39,6 +39,10 @@ function listItem(elem) {
     list.classList.add('dragging');
   });
 
+  list.addEventListener('dragend', () => {
+    list.classList.remove('dragging');
+  });
+
   function swap(draggedIndex, dropIndex) {
     const dragged = todoTasks[draggedIndex];
     const drop = todoTasks[dropIndex];
@@ -48,7 +52,7 @@ function listItem(elem) {
 
     dragged.index = dropIndex;
     drop.index = draggedIndex;
-
+    /* eslint-disable no-use-before-define */
     dragAndDrop();
   }
 
