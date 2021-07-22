@@ -13,7 +13,8 @@ body {
 main {
   margin: 200px auto;
   width: 80%;
-  box-shadow: 5px 0 15px -4px rgba(0, 0, 0, 0.8),
+  box-shadow:
+    5px 0 15px -4px rgba(0, 0, 0, 0.8),
     -5px 0 8px -4px rgba(0, 0, 0, 0.8);
 }
 
@@ -123,7 +124,6 @@ button:focus {
 
 .one-todo {
   transform: scale(1.5);
-  align-self: center;
   align-self: center;
 }
 
