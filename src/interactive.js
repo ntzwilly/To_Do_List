@@ -1,6 +1,7 @@
 /* eslint-disable import/no-cycle */
 import moreIcon from './more.svg';
 import { todoList, todoTasks, elementGenerator } from './index.js';
+import { statusUpdate } from './status.js';
 
 function savedList() {
   localStorage.setItem('ToDo', JSON.stringify(todoTasks));
@@ -19,18 +20,7 @@ function listItem(elem) {
   const image = elementGenerator('img', 'more', null, null);
   image.src = moreIcon;
 
-  if (elem.checked) {
-    input.classList.add('line-through');
-  } else {
-    input.classList.remove('line-through');
-  }
-
-  oneTodo.addEventListener('change', () => {
-    const todo = todoTasks[elem.index];
-    todo.checked = !elem.checked;
-    /* eslint-disable no-use-before-define */
-    dragAndDrop();
-  });
+  statusUpdate(elem, input, oneTodo, todoTasks);
 
   form.appendChild(input);
   flex.appendChild(oneTodo);
@@ -46,6 +36,7 @@ function listItem(elem) {
 
   list.addEventListener('dragstart', (event) => {
     event.dataTransfer.setData('index', elem.index);
+    list.classList.add('dragging');
   });
 
   function swap(draggedIndex, dropIndex) {
