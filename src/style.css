@@ -13,8 +13,7 @@ body {
 main {
   margin: 200px auto;
   width: 80%;
-  box-shadow:
-    5px 0 15px -4px rgba(0, 0, 0, 0.8),
+  box-shadow: 5px 0 15px -4px rgba(0, 0, 0, 0.8),
     -5px 0 8px -4px rgba(0, 0, 0, 0.8);
 }
 
@@ -92,7 +91,24 @@ button:focus {
 
 .task {
   display: flex;
+  flex-direction: row;
   align-items: center;
+  justify-content: space-between;
+  background-color: #fff;
+  width: 100%;
+  padding: 15px;
+  padding-left: 18px;
+  border-bottom: 1px solid gainsboro;
+}
+
+.flex {
+  display: flex;
+}
+
+.edit {
+  display: flex;
+  flex-direction: row;
+  width: 400px;
 }
 
 .label {
@@ -102,10 +118,13 @@ button:focus {
   font-size: 1rem;
   color: rgb(88, 86, 86);
   border: none;
+  align-self: center;
 }
 
 .one-todo {
   transform: scale(1.5);
+  align-self: center;
+  align-self: center;
 }
 
 .div-clear {
