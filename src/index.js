@@ -1,9 +1,10 @@
+/* eslint-disable import/no-cycle */
 import './style.css';
-import moreIcon from './more.svg';
 import Icon from './enter.svg';
 import recycle from './recycle.svg';
+import { dragAndDrop } from './interactive.js';
 
-function elementGenerator(typeName, className, content, idName) {
+export function elementGenerator(typeName, className, content, idName) {
   const element = document.createElement(typeName);
   if (className) {
     element.className = className;
@@ -16,8 +17,8 @@ function elementGenerator(typeName, className, content, idName) {
   }
   return element;
 }
-
-const todoTasks = [
+/* eslint-disable import/no-mutable-exports */
+export let todoTasks = [
   {
     description: 'Read the last chapiter of Ruby book',
     completed: false,
@@ -25,7 +26,7 @@ const todoTasks = [
   },
   {
     description: 'Grab a cup of coffee',
-    completed: false,
+    completed: true,
     index: 1,
   },
   {
@@ -57,38 +58,13 @@ enterIcon.classList.add('enter-icon');
 
 form.appendChild(enterIcon);
 
-const todoList = elementGenerator('ul', 'to-do-list', null, null);
+export const todoList = elementGenerator('ul', 'to-do-list', null, null);
 
-todoTasks.forEach((elem, i) => {
-  todoList.innerHTML += `<li class="task">
-                             <div class="to-do-div">
-                             <div>
-                             <input class="one-todo" type="checkbox" id="${i}">
-                             <form class="edit">
-                             </div>                             
-                             <input class="label" value='${todoTasks[i].description}'></input>
-                             </form>
-                             <img src="http://localhost:8080/3adb9cb42cd31f0448c7.svg" class="more"></div></li>`;
-});
-
-const todoDiv = elementGenerator('div', 'to-do-div', null, null);
-
-const checkBox = elementGenerator('input', 'one-todo', null, null);
-checkBox.type = 'checkbox';
-const task = elementGenerator('span', 'label', 'Task number', null);
 const divClear = elementGenerator('div', 'div-clear', null, null);
 const btnClear = elementGenerator('button', 'clear', null, null);
 btnClear.type = 'button';
 btnClear.textContent = 'Clear All completed';
 divClear.appendChild(btnClear);
-const myIcon = new Image();
-myIcon.src = moreIcon;
-myIcon.classList.add('more');
-
-todoDiv.appendChild(checkBox);
-
-todoDiv.appendChild(task);
-todoDiv.appendChild(myIcon);
 
 todo.appendChild(todoHeader);
 todo.appendChild(form);
@@ -97,3 +73,11 @@ todo.appendChild(divClear);
 
 const toDoContainer = document.getElementById('todo-container');
 toDoContainer.appendChild(todo);
+
+window.addEventListener('load', () => {
+  const result = localStorage.getItem('ToDo');
+  if (result) {
+    todoTasks = JSON.parse(result);
+  }
+  dragAndDrop();
+});

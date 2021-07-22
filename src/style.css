@@ -92,7 +92,24 @@ button:focus {
 
 .task {
   display: flex;
+  flex-direction: row;
   align-items: center;
+  justify-content: space-between;
+  background-color: #fff;
+  width: 100%;
+  padding: 15px;
+  padding-left: 18px;
+  border-bottom: 1px solid gainsboro;
+}
+
+.flex {
+  display: flex;
+}
+
+.edit {
+  display: flex;
+  flex-direction: row;
+  width: 400px;
 }
 
 .label {
@@ -102,10 +119,12 @@ button:focus {
   font-size: 1rem;
   color: rgb(88, 86, 86);
   border: none;
+  align-self: center;
 }
 
 .one-todo {
   transform: scale(1.5);
+  align-self: center;
 }
 
 .div-clear {
@@ -154,6 +173,14 @@ button:focus {
 
 .input-background {
   background: rgb(255, 254, 202);
+}
+
+.draggable {
+  cursor: move;
+}
+
+.draggable.dragging {
+  opacity: 0.4;
 }
 
 @media screen and (min-width: 768px) {
