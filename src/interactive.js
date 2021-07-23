@@ -2,7 +2,8 @@
 import moreIcon from './more.svg';
 import { todoList, todoTasks, elementGenerator } from './index.js';
 import { statusUpdate } from './status.js';
-import deleteIcon from './delete.svg'
+import deleteIcon from './delete.svg';
+import { editTask } from './crud.js';
 
 export function savedList() {
   localStorage.setItem('ToDo', JSON.stringify(todoTasks));
@@ -20,6 +21,8 @@ export function listItem(elem) {
   input.value = elem.description;
   const image = elementGenerator('img', 'more', null, null);
   image.src = moreIcon;
+  // const del = elementGenerator('img', 'more', null, null);
+  // image.src = deleteIcon;
   
   statusUpdate(elem, input, oneTodo, todoTasks);
 
@@ -30,6 +33,8 @@ export function listItem(elem) {
   list.appendChild(image);
 
   todoList.appendChild(list);
+
+  console.log(todoList)
 
   list.addEventListener('mousedown', () => {
     list.setAttribute('draggable', true);

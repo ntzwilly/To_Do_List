@@ -1,5 +1,6 @@
 /* eslint-disable import/no-cycle */
 /* eslint-disable import/prefer-default-export */
+import moreIcon from './more.svg';
 import { dragAndDrop, listItem } from './interactive.js';
 
 export function statusUpdate(item, input, oneTodo, todoTasks) {

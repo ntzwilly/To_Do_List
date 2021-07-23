@@ -3,7 +3,7 @@ import './style.css';
 import Icon from './enter.svg';
 import recycle from './recycle.svg';
 import { dragAndDrop } from './interactive.js';
-import { createTask } from "./crud.js";
+import { createTask, clearTasks, editTask } from "./crud.js";
 
 export function elementGenerator(typeName, className, content, idName) {
   const element = document.createElement(typeName);
@@ -46,7 +46,7 @@ form.appendChild(enterIcon);
 export const todoList = elementGenerator('ul', 'to-do-list', null, null);
 
 const divClear = elementGenerator('div', 'div-clear', null, null);
-const btnClear = elementGenerator('button', 'clear', null, null);
+export const btnClear = elementGenerator('button', 'clear', null, null);
 btnClear.type = 'button';
 btnClear.textContent = 'Clear All completed';
 divClear.appendChild(btnClear);
@@ -67,4 +67,6 @@ window.addEventListener('load', () => {
   }
   dragAndDrop();
   createTask();
+  clearTasks();
+  editTask();
 });
