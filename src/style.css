@@ -144,11 +144,16 @@ button:focus {
   color: rgb(88, 86, 86);
 }
 
+.delete,
 .more {
   height: 15px;
   color: gray;
   cursor: pointer;
   justify-self: flex-end;
+}
+
+.display-none{
+  display: none;
 }
 
 .more,

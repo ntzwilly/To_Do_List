@@ -2,12 +2,13 @@
 import moreIcon from './more.svg';
 import { todoList, todoTasks, elementGenerator } from './index.js';
 import { statusUpdate } from './status.js';
+import deleteIcon from './delete.svg'
 
-function savedList() {
+export function savedList() {
   localStorage.setItem('ToDo', JSON.stringify(todoTasks));
 }
 
-function listItem(elem) {
+export function listItem(elem) {
   const list = elementGenerator('li', 'task draggable', null, null);
   const flex = elementGenerator('div', 'flex', null, null);
   const oneTodo = elementGenerator('input', 'one-todo', null, null);
@@ -19,7 +20,7 @@ function listItem(elem) {
   input.value = elem.description;
   const image = elementGenerator('img', 'more', null, null);
   image.src = moreIcon;
-
+  
   statusUpdate(elem, input, oneTodo, todoTasks);
 
   form.appendChild(input);
