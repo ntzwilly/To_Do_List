@@ -3,7 +3,7 @@ import moreIcon from "./more.svg";
 import { todoList, todoTasks, elementGenerator } from "./index.js";
 import { statusUpdate } from "./status.js";
 import deleteIcon from "./delete.svg";
-import { editTask } from "./crud.js";
+import { editTask, deleteTask } from "./crud.js";
 
 export function savedList() {
   localStorage.setItem("ToDo", JSON.stringify(todoTasks));
@@ -19,13 +19,31 @@ export function listItem(elem) {
   const form = elementGenerator("form", "edit", null, null);
   const input = elementGenerator("input", "label", null, null);
 
+  input.setAttribute("name",elem.index)
+ 
+  input.addEventListener('click',(e) =>{
+
+    image.src = deleteIcon;
+
+    image.addEventListener('click',(ev)=>{
+
+      deleteTask(elem.index);
+      location.reload();
+      
+    })
+  })
+
+  input.addEventListener('blur',(e)=>{
+
+    image.src=moreIcon;
+    e.preventDefault();
+  })  
+
   editTask(input, elem, form);
 
   input.value = elem.description;
   const image = elementGenerator("img", "more", null, null);
   image.src = moreIcon;
-  // const del = elementGenerator('img', 'more', null, null);
-  // image.src = deleteIcon;
 
   statusUpdate(elem, input, oneTodo, todoTasks);
 

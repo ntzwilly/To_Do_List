@@ -68,5 +68,4 @@ window.addEventListener('load', () => {
   dragAndDrop();
   createTask();
   clearTasks();
-  deleteTask();
 });
