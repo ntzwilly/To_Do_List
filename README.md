@@ -2,9 +2,9 @@
 
 # To Do list
 
-> Simple HTML list of To Do tasks
+> This page is a tool that helps to organize your day. It simply lists the things that you need to do and allows you to mark them as complete
 
-![todoscreenshot](https://user-images.githubusercontent.com/9049260/125768673-8ab5b3f7-120f-40c9-acc7-6eacbc75a50f.png)
+![todolist](https://user-images.githubusercontent.com/9049260/126870825-7e45118a-5965-4503-b951-bd40e68a31bf.png)
 
 ## Built With
 
@@ -18,11 +18,12 @@
 
 ## Getting Started
 
-   To get a local copy up and running follow these simple example steps.
+To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
     NodeJS
+
 ### Setup
 
     1. git clone https://github.com/ntzwilly/To_Do_List.git
