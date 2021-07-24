@@ -1,13 +1,16 @@
 /* eslint-disable import/no-cycle */
+/* eslint-disable no-use-before-define */
 import moreIcon from './more.svg';
 import { todoList, todoTasks, elementGenerator } from './index.js';
 import { statusUpdate } from './status.js';
+import deleteIcon from './delete.svg';
+import { editTask, deleteTask } from './crud.js';
 
-function savedList() {
+export function savedList() {
   localStorage.setItem('ToDo', JSON.stringify(todoTasks));
 }
 
-function listItem(elem) {
+export function listItem(elem) {
   const list = elementGenerator('li', 'task draggable', null, null);
   const flex = elementGenerator('div', 'flex', null, null);
   const oneTodo = elementGenerator('input', 'one-todo', null, null);
@@ -16,6 +19,25 @@ function listItem(elem) {
 
   const form = elementGenerator('form', 'edit', null, null);
   const input = elementGenerator('input', 'label', null, null);
+
+  input.setAttribute('name', elem.id);
+
+  input.addEventListener('click', () => {
+    image.src = deleteIcon;
+
+    image.addEventListener('click', () => {
+      deleteTask(elem.id);
+      window.location.reload();
+    });
+  });
+
+  input.addEventListener('blur', (e) => {
+    image.src = moreIcon;
+    e.preventDefault();
+  });
+
+  editTask(input, elem, form);
+
   input.value = elem.description;
   const image = elementGenerator('img', 'more', null, null);
   image.src = moreIcon;
@@ -35,7 +57,7 @@ function listItem(elem) {
   });
 
   list.addEventListener('dragstart', (event) => {
-    event.dataTransfer.setData('index', elem.index);
+    event.dataTransfer.setData('id', elem.id);
     list.classList.add('dragging');
   });
 
@@ -50,15 +72,15 @@ function listItem(elem) {
     todoTasks[draggedIndex] = drop;
     todoTasks[dropIndex] = dragged;
 
-    dragged.index = dropIndex;
-    drop.index = draggedIndex;
+    dragged.id = dropIndex;
+    drop.id = draggedIndex;
     /* eslint-disable no-use-before-define */
     dragAndDrop();
   }
 
   list.addEventListener('drop', (event) => {
-    const draggedIndex = event.dataTransfer.getData('index');
-    const dropIndex = elem.index;
+    const draggedIndex = event.dataTransfer.getData('id');
+    const dropIndex = elem.id;
 
     swap(draggedIndex, dropIndex);
     list.setAttribute('draggable', false);

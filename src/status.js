@@ -10,8 +10,9 @@ export function statusUpdate(item, input, oneTodo, todoTasks) {
   }
 
   oneTodo.addEventListener('change', () => {
-    const todo = todoTasks[item.index];
+    const todo = todoTasks[item.id];
     todo.checked = !item.checked;
+    todo.completed = !item.completed;
     /* eslint-disable no-use-before-define */
     dragAndDrop();
   });

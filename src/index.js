@@ -3,6 +3,7 @@ import './style.css';
 import Icon from './enter.svg';
 import recycle from './recycle.svg';
 import { dragAndDrop } from './interactive.js';
+import { createTask, clearTasks } from './crud.js';
 
 export function elementGenerator(typeName, className, content, idName) {
   const element = document.createElement(typeName);
@@ -18,23 +19,7 @@ export function elementGenerator(typeName, className, content, idName) {
   return element;
 }
 /* eslint-disable import/no-mutable-exports */
-export let todoTasks = [
-  {
-    description: 'Read the last chapiter of Ruby book',
-    completed: false,
-    index: 0,
-  },
-  {
-    description: 'Grab a cup of coffee',
-    completed: true,
-    index: 1,
-  },
-  {
-    description: 'Go to the marked',
-    completed: false,
-    index: 2,
-  },
-];
+export let todoTasks = [];
 
 const todo = elementGenerator('div', 'container', null, null);
 const todoHeader = elementGenerator('div', 'title', null, null);
@@ -48,7 +33,7 @@ myRecycle.classList.add('recycle');
 todoHeader.appendChild(myRecycle);
 
 const form = elementGenerator('form', 'to-do', null, null);
-const taskInput = elementGenerator('input', 'add-to-do', null, null);
+export const taskInput = elementGenerator('input', 'add-to-do', null, null);
 taskInput.placeholder = 'Add to your list...';
 form.appendChild(taskInput);
 
@@ -61,7 +46,7 @@ form.appendChild(enterIcon);
 export const todoList = elementGenerator('ul', 'to-do-list', null, null);
 
 const divClear = elementGenerator('div', 'div-clear', null, null);
-const btnClear = elementGenerator('button', 'clear', null, null);
+export const btnClear = elementGenerator('button', 'clear', null, null);
 btnClear.type = 'button';
 btnClear.textContent = 'Clear All completed';
 divClear.appendChild(btnClear);
@@ -80,4 +65,6 @@ window.addEventListener('load', () => {
     todoTasks = JSON.parse(result);
   }
   dragAndDrop();
+  createTask();
+  clearTasks();
 });
