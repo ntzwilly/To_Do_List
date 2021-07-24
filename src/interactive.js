@@ -20,13 +20,13 @@ export function listItem(elem) {
   const form = elementGenerator('form', 'edit', null, null);
   const input = elementGenerator('input', 'label', null, null);
 
-  input.setAttribute('name', elem.index);
+  input.setAttribute('name', elem.id);
 
   input.addEventListener('click', () => {
     image.src = deleteIcon;
 
     image.addEventListener('click', () => {
-      deleteTask(elem.index);
+      deleteTask(elem.id);
       window.location.reload();
     });
   });
@@ -57,7 +57,7 @@ export function listItem(elem) {
   });
 
   list.addEventListener('dragstart', (event) => {
-    event.dataTransfer.setData('index', elem.index);
+    event.dataTransfer.setData('id', elem.id);
     list.classList.add('dragging');
   });
 
@@ -72,15 +72,15 @@ export function listItem(elem) {
     todoTasks[draggedIndex] = drop;
     todoTasks[dropIndex] = dragged;
 
-    dragged.index = dropIndex;
-    drop.index = draggedIndex;
+    dragged.id = dropIndex;
+    drop.id = draggedIndex;
     /* eslint-disable no-use-before-define */
     dragAndDrop();
   }
 
   list.addEventListener('drop', (event) => {
-    const draggedIndex = event.dataTransfer.getData('index');
-    const dropIndex = elem.index;
+    const draggedIndex = event.dataTransfer.getData('id');
+    const dropIndex = elem.id;
 
     swap(draggedIndex, dropIndex);
     list.setAttribute('draggable', false);
