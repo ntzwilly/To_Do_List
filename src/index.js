@@ -3,7 +3,7 @@ import './style.css';
 import Icon from './enter.svg';
 import recycle from './recycle.svg';
 import { dragAndDrop } from './interactive.js';
-import { createTask, clearTasks, editTask } from "./crud.js";
+import { createTask, clearTasks, deleteTask } from "./crud.js";
 
 export function elementGenerator(typeName, className, content, idName) {
   const element = document.createElement(typeName);
@@ -68,5 +68,5 @@ window.addEventListener('load', () => {
   dragAndDrop();
   createTask();
   clearTasks();
-  editTask();
+  deleteTask();
 });

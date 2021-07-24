@@ -109,7 +109,7 @@ button:focus {
 .edit {
   display: flex;
   flex-direction: row;
-  width: 400px;
+  width: 40vw;
 }
 
 .label {

@@ -1,7 +1,6 @@
 import { listItem, savedList } from './interactive.js';
 import { todoTasks, taskInput, todoList } from './index.js'
 import { btnClear } from './index.js'
-import { fromPairs } from 'lodash';
 
 
 
@@ -23,12 +22,33 @@ export function createTask() {
   });
 } 
 
-export function editTask() {
- 
- 
+export function editTask(input, elem, form) {
+  
+  let newValue = ""
+  input.setAttribute("name",elem.index)
+  input.addEventListener('input',(e) =>
+  {     
+    let name  = e.target.name;
+    newValue = e.target.value;
+    e.preventDefault();  
+  })
+
+  form.addEventListener('submit',(e)=>{
+    let p =e.target[0].name;
+
+   todoTasks[p].description = newValue;
+   savedList();
+   
+   
+  })
 }
 
-function deleteTask() {}
+export function deleteTask() {
+
+  const deleteTask = todoList.querySelectorAll('.img');
+  console.log(deleteTask);
+
+}
 
 export function clearTasks() {
   btnClear.addEventListener('click', () => {
@@ -42,4 +62,6 @@ export function clearTasks() {
     location.reload();
   });
 }
+
+
 
