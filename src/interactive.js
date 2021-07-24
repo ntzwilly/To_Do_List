@@ -1,48 +1,45 @@
 /* eslint-disable import/no-cycle */
-import moreIcon from "./more.svg";
-import { todoList, todoTasks, elementGenerator } from "./index.js";
-import { statusUpdate } from "./status.js";
-import deleteIcon from "./delete.svg";
-import { editTask, deleteTask } from "./crud.js";
+/* eslint-disable no-use-before-define */
+import moreIcon from './more.svg';
+import { todoList, todoTasks, elementGenerator } from './index.js';
+import { statusUpdate } from './status.js';
+import deleteIcon from './delete.svg';
+import { editTask, deleteTask } from './crud.js';
 
 export function savedList() {
-  localStorage.setItem("ToDo", JSON.stringify(todoTasks));
+  localStorage.setItem('ToDo', JSON.stringify(todoTasks));
 }
 
 export function listItem(elem) {
-  const list = elementGenerator("li", "task draggable", null, null);
-  const flex = elementGenerator("div", "flex", null, null);
-  const oneTodo = elementGenerator("input", "one-todo", null, null);
-  oneTodo.type = "checkbox";
+  const list = elementGenerator('li', 'task draggable', null, null);
+  const flex = elementGenerator('div', 'flex', null, null);
+  const oneTodo = elementGenerator('input', 'one-todo', null, null);
+  oneTodo.type = 'checkbox';
   oneTodo.checked = elem.checked;
 
-  const form = elementGenerator("form", "edit", null, null);
-  const input = elementGenerator("input", "label", null, null);
+  const form = elementGenerator('form', 'edit', null, null);
+  const input = elementGenerator('input', 'label', null, null);
 
-  input.setAttribute("name",elem.index)
- 
-  input.addEventListener('click',(e) =>{
+  input.setAttribute('name', elem.index);
 
+  input.addEventListener('click', () => {
     image.src = deleteIcon;
 
-    image.addEventListener('click',(ev)=>{
-
+    image.addEventListener('click', () => {
       deleteTask(elem.index);
-      location.reload();
-      
-    })
-  })
+      window.location.reload();
+    });
+  });
 
-  input.addEventListener('blur',(e)=>{
-
-    image.src=moreIcon;
+  input.addEventListener('blur', (e) => {
+    image.src = moreIcon;
     e.preventDefault();
-  })  
+  });
 
   editTask(input, elem, form);
 
   input.value = elem.description;
-  const image = elementGenerator("img", "more", null, null);
+  const image = elementGenerator('img', 'more', null, null);
   image.src = moreIcon;
 
   statusUpdate(elem, input, oneTodo, todoTasks);
@@ -55,17 +52,17 @@ export function listItem(elem) {
 
   todoList.appendChild(list);
 
-  list.addEventListener("mousedown", () => {
-    list.setAttribute("draggable", true);
+  list.addEventListener('mousedown', () => {
+    list.setAttribute('draggable', true);
   });
 
-  list.addEventListener("dragstart", (event) => {
-    event.dataTransfer.setData("index", elem.index);
-    list.classList.add("dragging");
+  list.addEventListener('dragstart', (event) => {
+    event.dataTransfer.setData('index', elem.index);
+    list.classList.add('dragging');
   });
 
-  list.addEventListener("dragend", () => {
-    list.classList.remove("dragging");
+  list.addEventListener('dragend', () => {
+    list.classList.remove('dragging');
   });
 
   function swap(draggedIndex, dropIndex) {
@@ -81,15 +78,15 @@ export function listItem(elem) {
     dragAndDrop();
   }
 
-  list.addEventListener("drop", (event) => {
-    const draggedIndex = event.dataTransfer.getData("index");
+  list.addEventListener('drop', (event) => {
+    const draggedIndex = event.dataTransfer.getData('index');
     const dropIndex = elem.index;
 
     swap(draggedIndex, dropIndex);
-    list.setAttribute("draggable", false);
+    list.setAttribute('draggable', false);
   });
 
-  list.addEventListener("dragover", (event) => {
+  list.addEventListener('dragover', (event) => {
     event.preventDefault();
   });
 
@@ -98,7 +95,7 @@ export function listItem(elem) {
 
 /* eslint-disable import/prefer-default-export */
 export function dragAndDrop() {
-  todoList.innerHTML = "";
+  todoList.innerHTML = '';
   todoTasks.forEach((elem) => {
     const item = listItem(elem);
     todoList.appendChild(item);

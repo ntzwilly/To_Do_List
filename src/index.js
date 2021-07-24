@@ -3,7 +3,7 @@ import './style.css';
 import Icon from './enter.svg';
 import recycle from './recycle.svg';
 import { dragAndDrop } from './interactive.js';
-import { createTask, clearTasks, deleteTask } from "./crud.js";
+import { createTask, clearTasks } from './crud.js';
 
 export function elementGenerator(typeName, className, content, idName) {
   const element = document.createElement(typeName);
@@ -60,7 +60,6 @@ const toDoContainer = document.getElementById('todo-container');
 toDoContainer.appendChild(todo);
 
 window.addEventListener('load', () => {
-
   const result = localStorage.getItem('ToDo');
   if (result) {
     todoTasks = JSON.parse(result);

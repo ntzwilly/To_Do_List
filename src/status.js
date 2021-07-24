@@ -1,13 +1,10 @@
 /* eslint-disable import/no-cycle */
 /* eslint-disable import/prefer-default-export */
-import moreIcon from './more.svg';
-import { dragAndDrop, listItem } from './interactive.js';
+import { dragAndDrop } from './interactive.js';
 
 export function statusUpdate(item, input, oneTodo, todoTasks) {
-
   if (item.checked) {
     input.classList.add('line-through');
-    
   } else {
     input.classList.remove('line-through');
   }
